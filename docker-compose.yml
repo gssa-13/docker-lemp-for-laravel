@@ -8,7 +8,7 @@ services:
         networks:
             - appnet
         volumes:
-            - ./application:/var/www/html
+            - .:/var/www/html
         ports:
             - ${APP_PORT:-80}:80
         working_dir: /var/www/html
@@ -39,11 +39,11 @@ services:
         build:
             context: ./docker/node
             dockerfile: Dockerfile
-        image: shippingdocker/node:latest
+        image: laravel/node:18.2.0
         networks:
             - appnet
         volumes:
-            - ./application:/opt
+            - .:/opt
         working_dir: /opt
         command: echo hi
 networks:
