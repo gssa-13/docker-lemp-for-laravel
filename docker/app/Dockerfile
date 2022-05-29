@@ -30,6 +30,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 ADD default /etc/nginx/sites-available/default
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD php-fpm.conf /etc/php/8.1/fpm/php-fpm.conf
+ADD php.ini /etc/php/8.1/fpm/php.ini
 ADD start-container.sh /usr/bin/start-container
 RUN chmod +x /usr/bin/start-container
 
