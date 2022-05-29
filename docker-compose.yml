@@ -35,6 +35,17 @@ services:
             - dbdata:/var/lib/mysql
         ports:
             - ${FORWARD_DB_PORT:-3306}:3306
+    node:
+        build:
+            context: ./docker/node
+            dockerfile: Dockerfile
+        image: shippingdocker/node:latest
+        networks:
+            - appnet
+        volumes:
+            - ./application:/opt
+        working_dir: /opt
+        command: echo hi
 networks:
     appnet:
         driver: bridge
