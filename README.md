@@ -63,4 +63,4 @@ To run gulp commands from `./vendor/bin/phpunit`
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This software is licensed under the [MIT license](https://opensource.org/licenses/MIT).
