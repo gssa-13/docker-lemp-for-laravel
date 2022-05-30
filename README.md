@@ -5,6 +5,11 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/gssa-13/docker-lemp-for-laravel?style=flat-square)
 ## Ubuntu, Nginx, PHP-FPM, Supervisord and Nodejs for Laravel
 
+## Software versions
+| Ubuntu | Nginx | PHP   | Composer | Nodejs |
+|-------|-------|---------|--------|--------|
+| 22.04  | 1.20  | 8.1.2 | Latest  | 18.2.0 |
+
 ## Installation
 Copy the repository files to the root directory of your Laravel application
 ```
@@ -16,10 +21,23 @@ Copy the repository files to the root directory of your Laravel application
  -----| 'docker-compose.yml'
 ```
 
-## Software versions
-| Ubuntu | Nginx | PHP   | Composer | Nodejs |
-|-------|-------|---------|--------|--------|
-| 22.04  | 1.20  | 8.1.2 | Latest  | 18.2.0 |
+## Define environment variables
+If it's a new project, copy your `.env.example` file to `.env`
+  substitute the following data as  convenient to use on your local machine
+* MySQL data
+``` 
+DB_HOST=127.0.0.1 => DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=username
+DB_PASSWORD=secret
+```
+
+* Redis
+```
+REDIS_HOST=127.0.0.1 => REDIS_HOST=redis
+REDIS_PORT=6379
+```
 
 ## Usage
 To build and run the application like `docker compose up -d`

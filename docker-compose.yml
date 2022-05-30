@@ -19,7 +19,7 @@ services:
         volumes:
             - cachedata:/data
         ports:
-            - ${FORWARD_REDIS_PORT:-6379}:6379
+            - ${REDIS_PORT:-6379}:6379
     mysql:
         image: mysql:5.7.32
         environment:
@@ -34,7 +34,7 @@ services:
         volumes:
             - dbdata:/var/lib/mysql
         ports:
-            - ${FORWARD_DB_PORT:-3306}:3306
+            - ${DB_PORT:-3306}:3306
     node:
         build:
             context: ./docker/node
