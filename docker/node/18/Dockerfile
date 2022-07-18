@@ -1,4 +1,4 @@
-FROM node:18.2.0
+FROM node:18.6.0
 
 LABEL maintainer="gssa-13"
 

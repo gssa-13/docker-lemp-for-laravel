@@ -6,9 +6,10 @@
 ## Ubuntu, Nginx, PHP-FPM, Supervisord and Nodejs for Laravel
 
 ## Software versions
-| Ubuntu | Nginx | PHP   | Composer | Nodejs |
-|-------|-------|---------|--------|--------|
-| 22.04  | 1.20  | 8.1.2 | Latest  | 18.2.0 |
+|Lavarel | Nginx | PHP   | Composer | NodeJs | Mysql | MariaDB | Redis |
+|--------|-------|-------|----------|--------|-------|---------|-------|
+| 9.*    | 1.18  | 8.1.* |  Latest  | 18.6.0 |8.0.29 | 10.8.3  | redis:7.0.3-alpine3.16 |
+
 
 ## Installation
 Copy the repository files to the root directory of your Laravel application
@@ -24,9 +25,9 @@ Copy the repository files to the root directory of your Laravel application
 ## Define environment variables
 If it's a new project, copy your `.env.example` file to `.env`
   substitute the following data as  convenient to use on your local machine
-* MySQL data
+* MySQL or MariaDB data
 ``` 
-DB_HOST=127.0.0.1 => DB_HOST=mysql
+DB_HOST=127.0.0.1 => DB_HOST=mysql || DB_HOST=mariadb
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=username
