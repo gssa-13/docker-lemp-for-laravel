@@ -27,6 +27,9 @@ RUN apt-get update \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
+RUN groupadd --force -g 1000 gssa
+RUN useradd -ms /bin/bash --no-user-group -g 1000 -u 1337 gssa
+
 ADD default /etc/nginx/sites-available/default
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD php-fpm.conf /etc/php/8.1/fpm/php-fpm.conf
