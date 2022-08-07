@@ -29,3 +29,5 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && update-alternatives --set php /usr/bin/php7.4 \
     && echo "daemon off;" >> /etc/nginx/nginx.conf
+
+ADD default /etc/nginx/sites-available/default
