@@ -6,13 +6,14 @@
 ## Ubuntu, Nginx, PHP-FPM, Supervisord and Nodejs for Laravel
 
 ## Software versions
-|Lavarel | Nginx | PHP   | Composer | NodeJs | Mysql | MariaDB | Redis |
-|--------|-------|-------|----------|--------|-------|---------|-------|
-| 9.*    | 1.18  | 8.1.* |  Latest  | 18.6.0 |8.0.29 | 10.8.3  | redis:7.0.3-alpine3.16 |
+|Lavarel | Ubuntu | Nginx | PHP   | Composer | NodeJs | Mysql | MariaDB | Redis |
+|--------|--------|-------|-------|----------|--------|-------|---------|-------|
+| 9.*    | 22.04  |  1.18  | 8.1.* |  Latest  | 18.6.0 |8.0.29 | 10.8.3  | redis:7.0.3-alpine3.16 |
 
 
 ## Installation
-Copy the repository files to the root directory of your Laravel application
+### New Project
+After to download laravel, you need copy this repository files to the root directory of your Laravel application
 ```
 | Laravel app
  -----| app
@@ -20,6 +21,22 @@ Copy the repository files to the root directory of your Laravel application
  -----| 'docker'
  -----| 'develop'
  -----| 'docker-compose.yml'
+```
+
+#### Run docker compose
+To build and run the application like `docker compose up -d`
+``` shell
+$ ./develop start
+```
+#### Install composer dependencies
+Is needed install composer dependencies for laravel runs
+``` shell
+$ ./develop composer install
+```
+#### Generate app key
+Generate your application encryption key using the following command
+``` shell
+$ ./develop artisan key:generate
 ```
 
 ## Define environment variables
