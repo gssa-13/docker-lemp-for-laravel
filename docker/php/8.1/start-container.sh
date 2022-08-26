@@ -14,8 +14,8 @@ chmod -R ugo+rw /.composer
 #
 if [ $# -gt 0 ]; then
     # If we passed a command, run it
-    exec gosu $WWWUSER "$@"
+    exec "$@"
 else
     # Otherwise start supervisord
     /usr/bin/supervisord
-fi 
+fi
