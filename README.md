@@ -8,7 +8,7 @@
 ## Software versions
 |Lavarel | Ubuntu | Nginx | PHP   | Composer | NodeJs | Mysql | MariaDB | Redis |
 |--------|--------|-------|-------|----------|--------|-------|---------|-------|
-| 9.*    | 22.04  |  1.18  | 8.1.* |  Latest  | 18.6.0 |8.0.29 | 10.8.3  | redis:7.0.3-alpine3.16 |
+| 9.*    | 22.04  |  1.18 | 8.1.* |  Latest  | 18.6.0 |8.0.30 | 10.9.2  | redis:7.0.4-alpine3.16 |
 
 
 ## Installation
