@@ -36,5 +36,6 @@ ADD php-fpm.conf /etc/php/8.1/fpm/php-fpm.conf
 ADD php.ini /etc/php/8.1/fpm/php.ini
 ADD start-container.sh /usr/bin/start-container
 RUN chmod +x /usr/bin/start-container
+RUN chmod -R 777 storage/
 
 ENTRYPOINT ["start-container"] 
