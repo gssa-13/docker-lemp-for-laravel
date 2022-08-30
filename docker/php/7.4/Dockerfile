@@ -36,6 +36,10 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 RUN groupadd --force -g 1000 gssa
 RUN useradd -ms /bin/bash --no-user-group -g 1000 -u 1337 gssa
 
+RUN mkdir /etc/nginx/ssl
+
+ADD server.crt /etc/nginx/ssl/server.crt
+ADD server.key /etc/nginx/ssl/server.key
 ADD default /etc/nginx/sites-available/default
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf

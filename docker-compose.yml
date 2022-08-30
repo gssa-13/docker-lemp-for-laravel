@@ -4,13 +4,14 @@ services:
         build:
             context: ./docker/php/8.1
             dockerfile: Dockerfile
-        image: laravel/php81:1.9.2
+        image: laravel/php81:1.9.3
         networks:
             - appnet
         volumes:
             - .:/var/www/html
         ports:
             - '${APP_PORT:-80}:80'
+            - '${APP_PORT_SSL:-443}:443'
         working_dir: /var/www/html
         depends_on:
             - redis

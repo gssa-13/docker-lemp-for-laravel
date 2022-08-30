@@ -27,15 +27,18 @@ RUN apt-get update \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
+RUN mkdir /etc/nginx/ssl
+
 RUN groupadd --force -g 1000 gssa
 RUN useradd -ms /bin/bash --no-user-group -g 1000 -u 1337 gssa
 
+ADD server.crt /etc/nginx/ssl/server.crt
+ADD server.key /etc/nginx/ssl/server.key
 ADD default /etc/nginx/sites-available/default
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD php-fpm.conf /etc/php/8.1/fpm/php-fpm.conf
 ADD php.ini /etc/php/8.1/fpm/php.ini
 ADD start-container.sh /usr/bin/start-container
 RUN chmod +x /usr/bin/start-container
-RUN chmod -R 777 storage/
 
 ENTRYPOINT ["start-container"] 
