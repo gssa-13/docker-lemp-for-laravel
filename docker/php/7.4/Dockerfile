@@ -2,6 +2,16 @@ FROM ubuntu:22.04
 
 LABEL maintainer="gssa-13"
 
+# Define build arguments
+ARG USER_ID
+ARG GROUP_ID
+
+# Define environment variables
+ENV USER_ID=$USER_ID
+ENV GROUP_ID=$GROUP_ID
+ENV USER_ID=${USER_ID:-1000}
+ENV GROUP_ID=${GROUP_ID:-1000}
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
@@ -21,7 +31,8 @@ RUN apt-get update \
        php7.4-imap php7.4-mysql php7.4-mbstring \
        php7.4-xml php7.4-zip php7.4-bcmath php7.4-soap \
        php7.4-intl php7.4-readline php7.4-xdebug \
-       php-msgpack php-igbinary \
+       php7.4-msgpack php7.4-igbinary php7.4-redis php7.4-swoole \
+       php7.4-ldap php7.4-pcov \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && mkdir /run/php \
     && apt-get -y autoremove \
@@ -33,10 +44,13 @@ RUN apt-get update \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-RUN groupadd --force -g 1000 gssa
-RUN useradd -ms /bin/bash --no-user-group -g 1000 -u 1337 gssa
-
 RUN mkdir /etc/nginx/ssl
+
+RUN addgroup --gid ${GROUP_ID} gssa
+RUN adduser --disabled-password --gecos '' --uid ${USER_ID} --gid ${GROUP_ID} gssa
+
+# Set user and group of working directory
+RUN chown -R gssa:gssa /var/www/html
 
 ADD server.crt /etc/nginx/ssl/server.crt
 ADD server.key /etc/nginx/ssl/server.key
