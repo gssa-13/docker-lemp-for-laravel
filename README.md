@@ -23,6 +23,14 @@ After to download laravel, you need copy this repository files to the root direc
  -----| 'docker-compose.yml'
 ```
 
+#### First step
+
+First at all, you have to export your user and group ID in your shell configuration
+``` shell
+$ export USER_ID=$(id -u)
+$ export GROUP_ID=$(id -g)
+```
+
 #### Run docker compose
 To build and run the application like `docker compose up -d`
 ``` shell
@@ -73,7 +81,7 @@ $ ./develop stop
 To run artisan command like `php artisan :command`
 ``` shell
 $ ./develop artisan :command
-$ ./develop artisan :command
+$ ./develop art :command
 ```
 To execute compoer like `composer require predis/predis`
 ``` shell
